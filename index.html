@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>The Dark Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Blinker:wght@100;200;300;400;600;700;800;900&family=Protest+Revolution&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="weather-app">
+      <header>
+        <div class="title">
+          <h1>Welcome to the Dark Weather App</h1>
+          <p><em>Foretell the weather without a crystal ball</em></p>
+        </div>
+        <form id="search-form">
+          <input
+            type="search"
+            placeholder="Insert location"
+            required
+            class="search-form-input"
+            id="search-form-input"
+          />
+          <input type="submit" value="Foretell" class="search-form-button" />
+        </form>
+      </header>
+      <main>
+        <div class="weather-app-data">
+          <div>
+            <h1 class="city-name" id="city"></h1>
+            <p class="weather-details">
+              <span id="time"></span>, <span id="description"></span>
+              <br />
+              Humidity: <strong id="humidity"></strong>, Wind:
+              <strong id="wind"></strong>
+            </p>
+          </div>
+          <div class="temperature-container">
+            <div id="icon"></div>
+            <div class="weather-app-temperature" id="temperature"></div>
+            <div class="temperature-unit">°C</div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      Build by
+      <a href="https://github.com/raquelhespanholf" target="_blank" class="link"
+        >Raquel Hespanhol</a
+      >
+      and available both in the depths of
+      <a
+        href="https://github.com/raquelhespanholf/dark-weather-app"
+        target="_blank"
+        class="link"
+        >GitHub</a
+      >
+      and on the dark side of
+      <a
+        href="https://thedarkweatherapp.netlify.app"
+        target="_blank"
+        class="link"
+        >Netlify</a
+      >
+    </footer>
+    <script src="src/index.js"></script>
+  </body>
+</html>
