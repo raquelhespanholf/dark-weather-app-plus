@@ -28,7 +28,15 @@ a {
   background: black;
   max-width: 900px;
   margin: 60px auto;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.weather-app-shadow {
   box-shadow: 0 5px 5px #d8a8f7;
+  background: black;
+  max-width: 900px;
+  margin: 60px auto;
   border-radius: 16px;
   padding: 30px;
 }
