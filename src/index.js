@@ -1,10 +1,10 @@
-function updateWeather(response) {
+function refreshWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let temperature = response.data.temperature.current;
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
-  let windSpeedElement = document.querySelector("#wind");
+  let windSpeedElement = document.querySelector("#wind-speed");
   let timeElement = document.querySelector("#time");
   let date = new Date(response.data.time * 1000);
   let iconElement = document.querySelector("#icon");
@@ -32,7 +32,6 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-
   let day = days[date.getDay()];
 
   if (minutes < 10) {
@@ -43,9 +42,9 @@ function formatDate(date) {
 }
 
 function searchCity(city) {
-  let apiKey = "b0b9f49cfbb90cb0b60c9a5b3td8eo3a";
-  let apiURL = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiURL).then(updateWeather);
+  let apiKey = "b2a5adcct04b33178913oc335f405433";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(refreshWeather);
 }
 
 function handleSearchSubmit(event) {
@@ -63,9 +62,9 @@ function formatDay(timestamp) {
 }
 
 function getForecast(city) {
-  let apiKey = "b0b9f49cfbb90cb0b60c9a5b3td8eo3a";
-  let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios(apiURL).then(displayForecast);
+  let apiKey = "b2a5adcct04b33178913oc335f405433";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -76,7 +75,7 @@ function displayForecast(response) {
       forecastHtml =
         forecastHtml +
         `
-  <div class="weather-forecast-day">
+      <div class="weather-forecast-day">
         <div class="weather-forecast-date">${formatDay(day.time)}</div>
 
         <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
@@ -89,13 +88,13 @@ function displayForecast(response) {
           )}º</div>
         </div>
       </div>
-`;
+    `;
     }
   });
-}
 
-let forecastElement = document.querySelector("#forecast");
-forecastElement.innerHTML = forecastHtml;
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
