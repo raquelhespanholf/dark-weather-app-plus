@@ -65,7 +65,7 @@ function formatDay(timestamp) {
 function getForecast(city) {
   let apiKey = "b0b9f49cfbb90cb0b60c9a5b3td8eo3a";
   let apiURL = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiURL).then(displayForecast);
+  axios(apiURL).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -76,22 +76,19 @@ function displayForecast(response) {
       forecastHtml =
         forecastHtml +
         `
-  <div class="row">
-    <div class="col-2">
-      <div class="weather-forecast-date">${formatDay(day.time)}</div>
-      <div class="weather-forecast-icon">
-      <img src="${day.condition.icon_url}"/>
-      </div>
-      <div class="weather-forecast-temperatures">
-        <div class="weather-forecast-temperature">
-        <strong>${Math.round(day.temperature.maximum)}°</strong>
+  <div class="weather-forecast-day">
+        <div class="weather-forecast-date">${formatDay(day.time)}</div>
+
+        <img src="${day.condition.icon_url}" class="weather-forecast-icon" />
+        <div class="weather-forecast-temperatures">
+          <div class="weather-forecast-temperature">
+            <strong>${Math.round(day.temperature.maximum)}º</strong>
+          </div>
+          <div class="weather-forecast-temperature">${Math.round(
+            day.temperature.minimum
+          )}º</div>
         </div>
-        <div class="weather-forecast-temperature">
-        <strong>${Math.round(day.temperature.minimum)}°</strong>
-        </div>
       </div>
-    </div>
-  </div>
 `;
     }
   });
@@ -104,5 +101,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Cluj-Napoca");
-getForecast("Cluj-Napoca");
-displayForecast();
